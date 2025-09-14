@@ -1,4 +1,7 @@
 {
+  "name": "my-php-submit-work/app",
+  "description": "Simple PHP mailer app",
+  "type": "project",
   "require": {
     "phpmailer/phpmailer": "^6.8"
   }
