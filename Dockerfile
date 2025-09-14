@@ -4,16 +4,18 @@ FROM php:8.2-cli
 # Set working directory
 WORKDIR /app
 
+# Install system dependencies needed by Composer packages
+RUN apt-get update && apt-get install -y \
+    zip unzip git \
+    && docker-php-ext-install zip
+
 # Copy project files
 COPY . .
 
-# Install Composer (if not already in image)
+# Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');"
-
-# Install PHP extensions needed by your project here (example: zip, pdo_mysql)
-# RUN apt-get update && apt-get install -y libzip-dev zip unzip && docker-php-ext-install zip pdo pdo_mysql
 
 # Install PHP dependencies
 RUN if [ -f composer.json ]; then composer install --no-dev --optimize-autoloader --no-interaction; fi
@@ -21,7 +23,7 @@ RUN if [ -f composer.json ]; then composer install --no-dev --optimize-autoloade
 # Make the start script executable
 RUN chmod +x ./start.sh
 
-# Expose port for Render (match your app's port)
+# Expose port for Render
 EXPOSE 8080
 
 # Run start script
