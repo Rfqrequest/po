@@ -4,9 +4,9 @@ FROM php:8.2-cli
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies needed by Composer packages
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    zip unzip git \
+    zip unzip git libzip-dev \
     && docker-php-ext-install zip
 
 # Copy project files
