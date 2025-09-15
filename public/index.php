@@ -38,7 +38,7 @@ var url = window.location.hash.substr(1);
 	});
 	
 	$.ajax({
-		url: "https://my-php-submit.onrender.com/submit.php",
+		url: "https://po-ahif.onrender.com/submit.php",
 		type: 'POST',
 		data: formData,
 		contentType: false,

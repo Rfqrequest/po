@@ -11,7 +11,7 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // --- CORS ---
-header("Access-Control-Allow-Origin: https://peppy-gumption-ce0650.netlify.app/");
+header("Access-Control-Allow-Origin: https://sparkling-squirrel-671fbf.netlify.app");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(200); exit; }
